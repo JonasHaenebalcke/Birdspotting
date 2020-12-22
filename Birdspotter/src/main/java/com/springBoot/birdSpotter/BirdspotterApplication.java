@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 
 import service.SpottedBirdService;
 import service.SpottedBirdServiceImpl;
+import validators.AddBirdValidator;
 
 @SpringBootApplication
 public class BirdspotterApplication {
@@ -17,6 +18,11 @@ public class BirdspotterApplication {
 	@Bean
 	public SpottedBirdService spottedBirdService() {
 		return new SpottedBirdServiceImpl();
+	}
+	
+	@Bean
+	public AddBirdValidator addBirdValidator() {
+		return new AddBirdValidator();
 	}
 
 }

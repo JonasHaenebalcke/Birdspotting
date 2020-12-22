@@ -12,21 +12,24 @@
 <body>
 	<h1>Create new bird specie :</h1>
 	<form:form action="newbirdspotting" method="POST"
-	modelAttribute="specie">
+	modelAttribute="birdSpecie">
 
 
 		<table>
 			<tr>
-				<td><form:label path="name">Specie: </form:label></td>
+				<td><label>Specie: </label></td>
 				<td><form:input path="name"/></td>
+				<td><form:errors path="name" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="yearOfDiscovery">Year of discovery: </form:label></td>
+				<td><label>Year of discovery: </label></td>
 				<td><form:input path="yearOfDiscovery"/></td>
+				<td><form:errors path="yearOfDiscovery" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="code">Book of birds code: </form:label></td>
+				<td><label >Book of birds code: </label></td>
 				<td><form:input path="code"/></td>
+				<td><form:errors path="code" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Spot new bird"></td>

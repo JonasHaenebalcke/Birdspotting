@@ -1,17 +1,17 @@
 package domain;
 
-import javax.validation.constraints.NotEmpty;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.validation.constraints.NotEmpty;
 
 public class BirdSpecie {
 	
-	@NotEmpty
+	@NotEmpty(message = "pls don't be empty")
 	private String name;
 	
-	@DateTimeFormat(pattern = "yyyy")
+	
     private Integer yearOfDiscovery;
 	
+	@NotEmpty(message = "pls don't be empty")
     private String code;
 		
 	public BirdSpecie(String name, Integer yearOfDiscovery, String code) {
