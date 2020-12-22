@@ -1,8 +1,15 @@
 package domain;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class BirdSpecie {
+	
+	@NotEmpty
 	private String name;
 	
+	@DateTimeFormat(pattern = "yyyy")
     private Integer yearOfDiscovery;
 	
     private String code;
