@@ -25,7 +25,6 @@ import validators.AddBirdValidator;
 @Controller
 @RequestMapping("/birdspotting")
 public class BirdSpottingController {
-
 	@Autowired
 	private SpottedBirdService spottedBirdService;
 

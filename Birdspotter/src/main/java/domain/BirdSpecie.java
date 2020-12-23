@@ -1,17 +1,27 @@
 package domain;
 
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 public class BirdSpecie {
 	
-	@NotEmpty(message = "pls don't be empty")
+	@NotEmpty(message = "This input may not be empty")
 	private String name;
 	
+//	@Pattern(regexp = "^(0|[1-9][0-9]*)$", message = "The year may only contain digits" )
+	@Min(value = 1250, message = "The earliest year of discovery is 1250")
+	@NotNull(message = "This input may not be empty")
+	@NumberFormat(style = Style.DEFAULT)
+    private Integer yearOfDiscovery;	
 	
-    private Integer yearOfDiscovery;
-	
-	@NotEmpty(message = "pls don't be empty")
+	@Pattern(regexp = "[A-Z]{1,2}[0-9]{3}", message = "Code should start with one or two capital letters [A-Z] followed by 3 digits")
+	@NotEmpty(message = "This input may not be empty")
     private String code;
 		
 	public BirdSpecie(String name, Integer yearOfDiscovery, String code) {
