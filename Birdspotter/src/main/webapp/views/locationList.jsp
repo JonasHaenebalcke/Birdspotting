@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Location List</title>
 <spring:url value="/css/style.css" var="urlCss"/>
 <link rel="stylesheet" href="${urlCss}" type="text/css" />
 </head>
