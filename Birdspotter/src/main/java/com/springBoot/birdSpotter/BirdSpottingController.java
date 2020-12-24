@@ -74,7 +74,7 @@ public class BirdSpottingController {
 		if (result.hasErrors()) {
 			return "addSpotting";
 		}
-		System.out.println("NA ERRORS");
+		
 		Optional<BirdSpotLocation> location = spottedBirdService.findByName(locationName);
 		if (location == null)
 			return "locationList";

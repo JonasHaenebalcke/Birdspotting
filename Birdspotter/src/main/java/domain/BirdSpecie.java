@@ -11,17 +11,16 @@ import org.springframework.format.annotation.NumberFormat.Style;
 
 public class BirdSpecie {
 	
-	@NotEmpty(message = "This input may not be empty")
+	@NotEmpty
 	private String name;
 	
-//	@Pattern(regexp = "^(0|[1-9][0-9]*)$", message = "The year may only contain digits" )
-	@Min(value = 1250, message = "The earliest year of discovery is 1250")
-	@NotNull(message = "This input may not be empty")
-	@NumberFormat(style = Style.DEFAULT)
+
+	@Min(value = 1250, message = "{validation.yearOfDiscovery.InvalidValuePast.message}")
+	@NotNull
     private Integer yearOfDiscovery;	
 	
-	@Pattern(regexp = "[A-Z]{1,2}[0-9]{3}", message = "Code should start with one or two capital letters [A-Z] followed by 3 digits")
-	@NotEmpty(message = "This input may not be empty")
+	@Pattern(regexp = "[A-Z]{1,2}[0-9]{3}", message = "{validation.code.InvalidRegex.message}")
+	@NotEmpty
     private String code;
 		
 	public BirdSpecie(String name, Integer yearOfDiscovery, String code) {

@@ -2,11 +2,13 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link href="../resources/css/style.css" rel="stylesheet" type="text/css">
+<spring:url value="/css/style.css" var="urlCss"/>
+<link rel="stylesheet" href="${urlCss}" type="text/css" />
 </head>
 <body>
 	<h1>Overview of spotted birds in ${location.get().getName()}</h1>

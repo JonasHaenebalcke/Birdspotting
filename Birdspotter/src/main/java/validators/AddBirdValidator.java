@@ -32,7 +32,7 @@ public class AddBirdValidator implements Validator {
 		}
 
 		if (year > Year.now().getValue())
-			errors.rejectValue("yearOfDiscovery", "badRequest", "You cannot discover birds in the future!");
+			errors.rejectValue("yearOfDiscovery", "InvalidValueFuture.message", "yearOfDiscovery must be under 1250");
 
 	}
 
