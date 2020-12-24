@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Location List</title>
-<spring:url value="/css/style.css" var="urlCss"/>
+<spring:url value="/css/style.css" var="urlCss" />
 <link rel="stylesheet" href="${urlCss}" type="text/css" />
 </head>
 <body>
@@ -29,8 +29,9 @@
 		</c:forEach>
 	</table>
 
-	<br>
-	<input name="submit" type="submit" value="Stop spotting">
-
+	<form action="logout" method="post">
+		<input type="submit" value="Stop spotting"> <input
+			type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
 </body>
 </html>
