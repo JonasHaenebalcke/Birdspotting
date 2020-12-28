@@ -15,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		auth.inMemoryAuthentication().withUser("spotter").password("{noop}RedDuck007").roles("SPOTTER").and()
 				.withUser("admin").password("{noop}eagle").roles("SPOTTER", "ADMIN");
-
 	}
 
 	@Override
@@ -23,8 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.formLogin().defaultSuccessUrl("/birdspotting", true).loginPage("/login").usernameParameter("username")
 				.passwordParameter("password").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
 
-		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/**/newbirdspotting").hasRole("ADMIN")
-				.antMatchers("/**").hasRole("SPOTTER");
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/birds-spotted/**").permitAll()
+		.antMatchers("/**/newbirdspotting").hasRole("ADMIN").antMatchers("/**").hasRole("SPOTTER");
 	}
 
 }

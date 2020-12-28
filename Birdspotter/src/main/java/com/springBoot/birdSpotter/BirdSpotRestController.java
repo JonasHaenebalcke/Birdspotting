@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import domain.BirdSpecie;
 import domain.BirdSpotLocation;
 import domain.SpottedBird;
 import service.SpottedBirdService;
@@ -23,14 +22,14 @@ public class BirdSpotRestController {
 	private SpottedBirdService spottedBirdService;
 
 	@GetMapping(value = "/{location}")
-	public List<SpottedBird> getAllBirds(@PathVariable("location") String locationName){
-		
-		List<SpottedBird> spottings = new ArrayList<SpottedBird>();
+	public List<SpottedBird> getAllBirds(@PathVariable("location") String locationName) {
+
 		Optional<BirdSpotLocation> location = spottedBirdService.findByName(locationName);
 		
-		spottings = location.get().getSpottedBirds();	
-		
-		
-		return spottings;
+		if (!location.isEmpty()) {
+			return location.get().getSpottedBirds();
+		} else {
+			return null;
+		}
 	}
 }

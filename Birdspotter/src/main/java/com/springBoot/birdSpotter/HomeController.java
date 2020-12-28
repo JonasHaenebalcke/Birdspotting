@@ -10,5 +10,4 @@ public class HomeController {
 	public String showHomePage() {
 		return "redirect:/birdspotting";
 	}
-
 }

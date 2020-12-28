@@ -6,14 +6,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.springframework.format.annotation.NumberFormat;
-import org.springframework.format.annotation.NumberFormat.Style;
-
 public class BirdSpecie {
 	
 	@NotEmpty
 	private String name;
-	
 
 	@Min(value = 1250, message = "{validation.yearOfDiscovery.InvalidValuePast.message}")
 	@NotNull

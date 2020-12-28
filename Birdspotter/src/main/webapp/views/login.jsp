@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>

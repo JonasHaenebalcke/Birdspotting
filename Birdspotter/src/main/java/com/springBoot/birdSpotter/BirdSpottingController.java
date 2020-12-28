@@ -1,6 +1,5 @@
 package com.springBoot.birdSpotter;
 
-import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +23,7 @@ import validators.AddBirdValidator;
 @Controller
 @RequestMapping("/birdspotting")
 public class BirdSpottingController {
+	
 	@Autowired
 	private SpottedBirdService spottedBirdService;
 
@@ -42,9 +41,6 @@ public class BirdSpottingController {
 
 		Optional<BirdSpotLocation> location = spottedBirdService.findByName(locationName);
 
-		if (location == null)
-			return "locationList";
-
 		List<SpottedBird> spottedBirds = location.get().getSpottedBirds();
 		model.addAttribute("location", location);
 		model.addAttribute("spottedBirds", spottedBirds);
@@ -52,15 +48,10 @@ public class BirdSpottingController {
 	}
 
 	@GetMapping(value = "/{location}/newbirdspotting")
-	public String AddSpotting(@PathVariable("location") String locationName, Model model) {
-
-		Optional<BirdSpotLocation> location = spottedBirdService.findByName(locationName);
-		if (location == null)
-			return "locationList";
+	public String AddSpotting(Model model) {
 
 		BirdSpecie birdSpecie = new BirdSpecie("Specie", 2020, "AA000");
 
-		model.addAttribute("location", location);
 		model.addAttribute("birdSpecie", birdSpecie);
 
 		return "addSpotting";
@@ -68,16 +59,14 @@ public class BirdSpottingController {
 
 	@PostMapping(value = "/{location}/newbirdspotting")
 	public String SubmitSpotting(@PathVariable("location") String locationName, @Valid BirdSpecie birdSpecie,
-			BindingResult result, Model model ) {
+			BindingResult result, Model model) {
+
 		addBirdValidator.validate(birdSpecie, result);
 
-		if (result.hasErrors()) {
+		if (result.hasErrors())
 			return "addSpotting";
-		}
-		
+
 		Optional<BirdSpotLocation> location = spottedBirdService.findByName(locationName);
-		if (location == null)
-			return "locationList";
 
 		location.get().increaseBirdSpot(birdSpecie);
 
